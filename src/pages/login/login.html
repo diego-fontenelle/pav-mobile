@@ -1,0 +1,23 @@
+<ion-content padding>
+
+  <ion-item>
+      <ion-label stacked>Login</ion-label>
+    <ion-input type="email" [(ngModel)]="login"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Senha</ion-label>
+    <ion-input type="password" [(ngModel)]="senha"></ion-input>
+  </ion-item>
+
+  <br/>
+
+  <button ion-button block (click)="doLogin()">
+    Login
+  </button>
+
+  <p>
+    {{msg}}
+  </p>
+
+</ion-content>

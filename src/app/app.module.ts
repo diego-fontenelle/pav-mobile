@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
+import { NativeStorage } from '@ionic-native/native-storage';
+
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -10,11 +12,13 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { DoacaoEdit } from '../pages/doacao/edit/edit';
 import { DoacaoCreate } from '../pages/doacao/create/create';
+import { LoginPage } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { DoacaoProvider } from '../providers/doacao.provider';
+import { UsuarioProvider } from '../providers/usuario.provider';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,8 @@ import { DoacaoProvider } from '../providers/doacao.provider';
     HomePage,
     TabsPage,
     DoacaoEdit,
-    DoacaoCreate
+    DoacaoCreate,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,8 @@ import { DoacaoProvider } from '../providers/doacao.provider';
     HomePage,
     TabsPage,
     DoacaoEdit,
-    DoacaoCreate
+    DoacaoCreate,
+    LoginPage
   ],
   providers: [
     StatusBar,
@@ -48,7 +54,9 @@ import { DoacaoProvider } from '../providers/doacao.provider';
       provide: ErrorHandler, 
       useClass: IonicErrorHandler
     },
-    DoacaoProvider
+    NativeStorage,
+    DoacaoProvider,
+    UsuarioProvider
   ]
 })
 export class AppModule {}
