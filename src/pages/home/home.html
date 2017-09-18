@@ -1,10 +1,19 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Minhas doações</ion-title>
+
+    <ion-buttons right>
+      <button ion-button icon-only strong (click)="navigate('create')">
+          <ion-icon name="ios-add" md="md-add" style="color: #3c4fe2"></ion-icon>
+        </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
+  <ion-refresher (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-item no-lines>
     <ion-icon name='happy' item-left style="color: #d03e84"></ion-icon>
       Doações realizadas
@@ -12,10 +21,11 @@
   </ion-item>
   <hr>
   <ion-list>
-    <ion-item *ngFor="let doacao of doacoes" (click)="navigate(doacao._id)">
-      <ion-icon name="ios-archive" item-left [style.color]="doacao.status == 'Pendente' ? '#55acee'  : '#55eea7'"></ion-icon>
+    <ion-item *ngFor="let doacao of doacoes" (click)="navigate('edit', doacao._id)">
+      <ion-icon name="shirt" item-left [style.color]="doacao.status == 'Pendente' ? '#55acee'  : '#55eea7'"></ion-icon>
       {{doacao.titulo}} <br>
       {{doacao.status}}
     </ion-item>
   </ion-list>
+
 </ion-content>

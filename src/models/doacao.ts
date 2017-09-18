@@ -4,6 +4,9 @@ export class Doacao {
   public descricao: String;
   public data_criacao: Date;
   public publico_alvo: String;
+  public usuario = {
+    _id: ''
+  };
 
   constructor() {
     this.titulo = '';

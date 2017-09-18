@@ -9,6 +9,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { DoacaoEdit } from '../pages/doacao/edit/edit';
+import { DoacaoCreate } from '../pages/doacao/create/create';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -22,7 +23,8 @@ import { DoacaoProvider } from '../providers/doacao.provider';
     ContactPage,
     HomePage,
     TabsPage,
-    DoacaoEdit
+    DoacaoEdit,
+    DoacaoCreate
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { DoacaoProvider } from '../providers/doacao.provider';
     ContactPage,
     HomePage,
     TabsPage,
-    DoacaoEdit
+    DoacaoEdit,
+    DoacaoCreate
   ],
   providers: [
     StatusBar,

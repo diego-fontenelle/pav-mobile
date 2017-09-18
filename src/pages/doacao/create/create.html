@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Nova doação</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+    <div *ngIf="doacao" class="item-detail" padding>
+  
+      <ion-item>
+        <ion-label stacked>
+          Título
+        </ion-label>
+        <ion-input [(ngModel)]="doacao.titulo">
+        </ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label stacked>
+          Público alvo
+        </ion-label>
+        <ion-input [(ngModel)]="doacao.publico_alvo">
+        </ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label stacked>
+          Descrição
+        </ion-label>
+        <ion-textarea [(ngModel)]="doacao.descricao">
+        </ion-textarea>
+      </ion-item>
+  
+      <p>
+        {{msg}}
+      </p>
+  
+      <button ion-button (click)="create()" padding>Cadastrar</button>
+    </div>
+  
+  </ion-content>

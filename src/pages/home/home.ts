@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { DoacaoProvider } from '../../providers/doacao.provider';
 import { DoacaoEdit } from '../doacao/edit/edit';
+import { DoacaoCreate } from '../doacao/create/create';
 
 @Component({
   selector: 'page-home',
@@ -22,10 +23,31 @@ export class HomePage {
 
   }
 
-  navigate(id) {
-    this.navCtrl.push(DoacaoEdit, {
-      id: id
-    })
+  refresh(refresher) {
+    this.doacaoProvider.read()
+    .subscribe(
+      data => { 
+        this.doacoes = (<any>data).body; 
+        this.doacoesRealizadas = this.doacoes.length; 
+        refresher.complete();
+      },
+      error => console.error(error)
+    );
+  }
+
+  navigate(type, id) {
+
+    switch(type) {
+      case 'edit':
+        this.navCtrl.push(DoacaoEdit, {
+          id: id
+        });
+        break;
+
+      case 'create':
+        this.navCtrl.push(DoacaoCreate);
+        break;
+    }  
   }
 
 
