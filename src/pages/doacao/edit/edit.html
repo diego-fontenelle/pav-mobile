@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>{{doacao?.titulo}}</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+<ion-content>
+    <div *ngIf="doacao" class="item-detail" padding>
+
+      <ion-item>
+        <ion-label stacked>
+          Público alvo
+        </ion-label>
+        <ion-input [(ngModel)]="doacao.publico_alvo">
+        </ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label stacked>
+          Data da postagem
+        </ion-label>
+        <ion-input [(ngModel)]="dataCriacao" readonly>
+            
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>
+          Descrição
+        </ion-label>
+        <ion-textarea [(ngModel)]="doacao.descricao">
+        </ion-textarea>
+      </ion-item>
+
+      <p>
+        {{msg}}
+      </p>
+
+    </div>
+
+    <button ion-button (click)="update()" padding>Atualizar</button>
+
+</ion-content>
