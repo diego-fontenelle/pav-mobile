@@ -1,8 +1,8 @@
 {
   "name": "pav",
-  "app_id": "",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "app_id": "046fc77a"
 }
