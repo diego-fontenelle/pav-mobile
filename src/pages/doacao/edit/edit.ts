@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { DoacaoProvider } from '../../../providers/doacao.provider';
 import { Doacao } from '../../../models/doacao';
 import { Http } from '@angular/http';
+import { HomePage } from '../../home/home';
 
 @Component({
   selector: 'doacao-edit',
@@ -37,7 +38,11 @@ export class DoacaoEdit {
   update() {
     this.doacaoProvider.update(this.doacao)
       .subscribe(
-        data => { let message = <any>data; this.msg = message.message; },
+        data => { 
+          let message = <any>data; 
+          this.msg = message.message; 
+          this.navCtrl.push(HomePage)
+        },
         error => console.error(error)
       )
   }

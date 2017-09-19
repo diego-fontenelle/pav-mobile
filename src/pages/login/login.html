@@ -1,23 +1,37 @@
-<ion-content padding>
+<ion-content>
 
-  <ion-item>
-      <ion-label stacked>Login</ion-label>
-    <ion-input type="email" [(ngModel)]="login"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label stacked>Senha</ion-label>
-    <ion-input type="password" [(ngModel)]="senha"></ion-input>
-  </ion-item>
+  <ion-list>
+      
+    <ion-item>
+      <ion-label floating>
+        <p>
+          <ion-icon name="person" item-start></ion-icon>
+          Usuário
+        </p>
+      </ion-label>
+      <ion-input type="email" [(ngModel)]="login"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+        <ion-label floating>
+          <p>
+            <ion-icon name="lock" item-start></ion-icon>
+            Senha
+          </p>
+        </ion-label>
+      
+        <ion-input type="password" [(ngModel)]="senha"></ion-input>
+    </ion-item>
+  
+  </ion-list>
 
   <br/>
 
-  <button ion-button block (click)="doLogin()">
-    Login
-  </button>
-
-  <p>
-    {{msg}}
-  </p>
+  <div padding> 
+    <button ion-button block (click)="doLogin()">
+      Login
+    </button>
+  </div>
+  
 
 </ion-content>

@@ -4,6 +4,7 @@ import { UsuarioProvider } from '../../providers/usuario.provider';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { HomePage } from '../../pages/home/home';
 import { TabsPage } from '../../pages/tabs/tabs';
+import { ToastController } from 'ionic-angular';
 
 @Component({
   selector: 'page-login',
@@ -14,12 +15,12 @@ export class LoginPage {
 
   public login: any;
   public senha: any;
-  public msg: any;
 
   constructor(
     public navCtrl: NavController, 
     private usuarioProvider: UsuarioProvider,
-    private nativeStorage: NativeStorage) {
+    private nativeStorage: NativeStorage,
+    public toastCtrl: ToastController) {
 
   }
 
@@ -30,10 +31,29 @@ export class LoginPage {
       this.usuarioProvider.login({login: this.login, senha: this.senha})
         .subscribe(
           data => this.verify(data),
-          error => { console.log(error); this.msg = 'Erro ao fazer login, tente novamente'; }
+          error => { 
+            console.log(error);
+            const toast = this.toastCtrl.create({
+              message: 'Erro ao fazer login, tente novamente',
+              showCloseButton: true,
+              closeButtonText: 'Ok',
+              position: 'bottom',
+              duration: 3000
+            });
+      
+            toast.present();
+          }
         )    
     } else {
-      this.msg = 'Preencha o login e senha';
+      const toast = this.toastCtrl.create({
+        message: 'Preencha o login e senha',
+        showCloseButton: true,
+        closeButtonText: 'Ok',
+        position: 'bottom',
+        duration: 3000
+      });
+
+      toast.present();
     } 
   }
 
@@ -53,7 +73,15 @@ export class LoginPage {
       //     error => console.error('Error storing item', error)
       //   ); 
     else {
-      this.msg = data.message;
+      const toast = this.toastCtrl.create({
+        message: 'Usuário ou senha incorreta',
+        showCloseButton: true,
+        closeButtonText: 'Ok',
+        position: 'bottom',
+        duration: 3000
+      });
+
+      toast.present();
     }
   }
 
