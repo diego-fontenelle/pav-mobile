@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Detalhes do evento</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-card *ngIf="evento" class="item-detail">
+  
+      <ion-card-header>
+        <ion-label>
+            {{evento.nome}}
+        </ion-label>
+      </ion-card-header>
+
+      <ion-card-content>
+
+        <ion-item no-padding>
+          <p style="white-space: normal">
+            {{evento.descricao}}
+          </p>
+        </ion-item>
+
+        <ion-item no-padding>
+          <p>
+            <ion-icon name="pin" item-start></ion-icon>
+            {{evento.endereco.bairro}}, {{evento.endereco.logradouro}}, {{evento.endereco.complemento}}
+          </p>
+        </ion-item>
+        
+        <ion-row no-padding>
+
+          <ion-col>
+            <ion-icon name="calendar" icon-start></ion-icon>
+            {{dataCriacao}}
+          </ion-col>
+
+          <ion-col text-center>
+            <ion-icon name="logo-whatsapp" icon-start></ion-icon>
+            {{evento.usuario.dados_pessoais.telefone}}
+          </ion-col>
+
+        </ion-row>
+
+      </ion-card-content>
+  
+      
+    
+    </ion-card>
+  
+  </ion-content>

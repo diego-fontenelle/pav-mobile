@@ -4,6 +4,7 @@ import { DoacaoProvider } from '../../providers/doacao.provider';
 import { UsuarioProvider } from '../../providers/usuario.provider';
 import { DoacaoEdit } from '../doacao/edit/edit';
 import { DoacaoCreate } from '../doacao/create/create';
+import { LoadingController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -18,29 +19,43 @@ export class HomePage {
   constructor(
     public navCtrl: NavController, 
     private doacaoProvider: DoacaoProvider,
-    public usuarioProvider: UsuarioProvider
+    public usuarioProvider: UsuarioProvider,
+    public loadingCtrl: LoadingController
   ) {
 
     this.user = usuarioProvider.session;
     console.log(this.user);
+  }
 
-    this.doacaoProvider.read()
-      .subscribe(
-        data => { this.doacoes = data; this.doacoes = this.doacoes.body; this.doacoesRealizadas = this.doacoes.length; },
-        error => console.error(error)
-      );
-
+  ionViewDidLoad() {
+    let loading = this.loadingCtrl.create();
+    loading.present().then(
+      () => this.doacaoProvider.read()
+            .subscribe(
+              data => { 
+                this.doacoes = data; 
+                this.doacoes = this.doacoes.body; 
+                this.doacoesRealizadas = this.doacoes.length;
+                loading.dismiss()
+              },
+              error => { console.error(error); loading.dismiss() },
+            )
+    );
   }
 
   refresh(refresher) {
-    this.doacaoProvider.read()
-    .subscribe(
-      data => { 
-        this.doacoes = (<any>data).body; 
-        this.doacoesRealizadas = this.doacoes.length; 
-        refresher.complete();
-      },
-      error => console.error(error)
+    let loading = this.loadingCtrl.create();
+      loading.present().then(
+      () => this.doacaoProvider.read()
+            .subscribe(
+              data => { 
+                this.doacoes = (<any>data).body; 
+                this.doacoesRealizadas = this.doacoes.length; 
+                refresher.complete();
+                loading.dismiss()
+              },
+              error => { console.error(error); loading.dismiss() }
+            )
     );
   }
 

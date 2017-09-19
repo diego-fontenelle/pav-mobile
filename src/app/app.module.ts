@@ -13,12 +13,15 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { DoacaoEdit } from '../pages/doacao/edit/edit';
 import { DoacaoCreate } from '../pages/doacao/create/create';
 import { LoginPage } from '../pages/login/login';
+import { EventoPage } from '../pages/evento/evento';
+import { DetailsPage } from '../pages/evento/details/details';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { DoacaoProvider } from '../providers/doacao.provider';
 import { UsuarioProvider } from '../providers/usuario.provider';
+import { EventoProvider } from '../providers/evento.provider';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,9 @@ import { UsuarioProvider } from '../providers/usuario.provider';
     TabsPage,
     DoacaoEdit,
     DoacaoCreate,
-    LoginPage
+    LoginPage,
+    EventoPage,
+    DetailsPage
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,9 @@ import { UsuarioProvider } from '../providers/usuario.provider';
     TabsPage,
     DoacaoEdit,
     DoacaoCreate,
-    LoginPage
+    LoginPage,
+    EventoPage,
+    DetailsPage
   ],
   providers: [
     StatusBar,
@@ -56,7 +63,8 @@ import { UsuarioProvider } from '../providers/usuario.provider';
     },
     NativeStorage,
     DoacaoProvider,
-    UsuarioProvider
+    UsuarioProvider,
+    EventoProvider
   ]
 })
 export class AppModule {}

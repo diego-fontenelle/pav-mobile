@@ -4,7 +4,7 @@ import { UsuarioProvider } from '../../providers/usuario.provider';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { HomePage } from '../../pages/home/home';
 import { TabsPage } from '../../pages/tabs/tabs';
-import { ToastController } from 'ionic-angular';
+import { ToastController, LoadingController } from 'ionic-angular';
 
 @Component({
   selector: 'page-login',
@@ -20,7 +20,9 @@ export class LoginPage {
     public navCtrl: NavController, 
     private usuarioProvider: UsuarioProvider,
     private nativeStorage: NativeStorage,
-    public toastCtrl: ToastController) {
+    public toastCtrl: ToastController,
+    public loadingCtrl: LoadingController
+  ) {
 
   }
 
@@ -28,22 +30,26 @@ export class LoginPage {
     // Verificar se user e pw estão preenchidos
     if(this.login && this.senha) {
       // Recuperar usuário por login
-      this.usuarioProvider.login({login: this.login, senha: this.senha})
-        .subscribe(
-          data => this.verify(data),
-          error => { 
-            console.log(error);
-            const toast = this.toastCtrl.create({
-              message: 'Erro ao fazer login, tente novamente',
-              showCloseButton: true,
-              closeButtonText: 'Ok',
-              position: 'bottom',
-              duration: 3000
-            });
+      let loading = this.loadingCtrl.create();
       
-            toast.present();
-          }
-        )    
+      loading.present().then(
+        () => this.usuarioProvider.login({login: this.login, senha: this.senha})
+              .subscribe(
+                data => { this.verify(data); loading.dismiss(); },
+                error => { 
+                  console.log(error);
+                  const toast = this.toastCtrl.create({
+                    message: 'Erro ao fazer login, tente novamente',
+                    showCloseButton: true,
+                    closeButtonText: 'Ok',
+                    position: 'bottom',
+                    duration: 3000
+                  });
+                  loading.dismiss();
+                  toast.present();
+                }
+        )
+      )    
     } else {
       const toast = this.toastCtrl.create({
         message: 'Preencha o login e senha',
