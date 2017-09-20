@@ -4,6 +4,7 @@ import { UsuarioProvider } from '../../providers/usuario.provider';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { HomePage } from '../../pages/home/home';
 import { TabsPage } from '../../pages/tabs/tabs';
+import { TabsPageOng } from '../../pages/tabs-page-ong/tabs-page-ong';
 import { ToastController, LoadingController } from 'ionic-angular';
 
 @Component({
@@ -69,9 +70,14 @@ export class LoginPage {
     if(usuario) {
       this.usuarioProvider.session = {
         nome: usuario.dados_pessoais.nome, 
-        id: usuario._id
+        id: usuario._id,
+        tipo: usuario.tipo
       };
-      this.navCtrl.push(TabsPage);
+      if(usuario.tipo == 'Doador')
+        this.navCtrl.push(TabsPage);
+      else {
+        this.navCtrl.push(TabsPageOng);
+      }
     }
       // this.nativeStorage.setItem('usuario', {nome: usuario.nome, id: usuario._id})
       //   .then(

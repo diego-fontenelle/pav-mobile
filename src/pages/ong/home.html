@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Doações</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-refresher (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+      <ion-card>
+        <ion-item *ngFor="let doacao of doacoes" (click)="navigate('edit', doacao._id)">
+          <ion-icon name="shirt" item-left [style.color]="doacao.status == 'Pendente' ? '#55acee'  : '#55eea7'"></ion-icon>
+          <h4>{{doacao.titulo}}</h4>
+          <p>{{doacao.status}}</p>
+        </ion-item>
+      </ion-card>
+  </ion-list>
+
+</ion-content>

@@ -1,51 +1,58 @@
 <ion-header>
-    <ion-navbar>
-      <ion-title>Detalhes do evento</ion-title>
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar>
+    <ion-title>Detalhes do evento</ion-title>
+
+    <ion-buttons right>
+      <button ion-button icon-only strong (click)="navigate('create')">
+        <ion-icon name="ios-add" md="md-add" style="color: #3c4fe2"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
   
-  <ion-content>
-    <ion-card *ngIf="evento" class="item-detail">
-  
-      <ion-card-header>
-        <ion-label>
-            {{evento.nome}}
-        </ion-label>
-      </ion-card-header>
+<ion-content>
+  <ion-card *ngIf="evento" class="item-detail">
 
-      <ion-card-content>
+    <ion-card-header>
+      <ion-label>
+          {{evento.nome}}
+      </ion-label>
+    </ion-card-header>
 
-        <ion-item no-padding>
-          <p style="white-space: normal">
-            {{evento.descricao}}
-          </p>
-        </ion-item>
+    <ion-card-content>
 
-        <ion-item no-padding>
-          <p>
-            <ion-icon name="pin" item-start></ion-icon>
-            {{evento.endereco.bairro}}, {{evento.endereco.logradouro}}, {{evento.endereco.complemento}}
-          </p>
-        </ion-item>
-        
-        <ion-row no-padding>
+      <ion-item no-padding>
+        <p style="white-space: normal">
+          {{evento.descricao}}
+        </p>
+      </ion-item>
 
-          <ion-col>
-            <ion-icon name="calendar" icon-start></ion-icon>
-            {{dataCriacao}}
-          </ion-col>
-
-          <ion-col text-center>
-            <ion-icon name="logo-whatsapp" icon-start></ion-icon>
-            {{evento.usuario.dados_pessoais.telefone}}
-          </ion-col>
-
-        </ion-row>
-
-      </ion-card-content>
-  
+      <ion-item no-padding>
+        <p>
+          <ion-icon name="pin" item-start></ion-icon>
+          {{evento.endereco.bairro}}, {{evento.endereco.logradouro}}, {{evento.endereco.complemento}}
+        </p>
+      </ion-item>
       
+      <ion-row no-padding>
+
+        <ion-col>
+          <ion-icon name="calendar" icon-start></ion-icon>
+          {{dataCriacao}}
+        </ion-col>
+
+        <ion-col text-center>
+          <ion-icon name="logo-whatsapp" icon-start></ion-icon>
+          {{evento.usuario.dados_pessoais.telefone}}
+        </ion-col>
+
+      </ion-row>
+
+    </ion-card-content>
+
     
-    </ion-card>
   
-  </ion-content>
+  </ion-card>
+
+</ion-content>

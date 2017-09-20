@@ -15,6 +15,8 @@ import { DoacaoCreate } from '../pages/doacao/create/create';
 import { LoginPage } from '../pages/login/login';
 import { EventoPage } from '../pages/evento/evento';
 import { DetailsPage } from '../pages/evento/details/details';
+import { TabsPageOng } from '../pages/tabs-page-ong/tabs-page-ong';
+import { HomePageOng } from '../pages/ong/home'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -34,7 +36,9 @@ import { EventoProvider } from '../providers/evento.provider';
     DoacaoCreate,
     LoginPage,
     EventoPage,
-    DetailsPage
+    DetailsPage,
+    TabsPageOng,
+    HomePageOng
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,9 @@ import { EventoProvider } from '../providers/evento.provider';
     DoacaoCreate,
     LoginPage,
     EventoPage,
-    DetailsPage
+    DetailsPage,
+    TabsPageOng,
+    HomePageOng
   ],
   providers: [
     StatusBar,

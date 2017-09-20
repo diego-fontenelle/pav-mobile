@@ -11,7 +11,7 @@
       <ion-label stacked>
         Título
       </ion-label>
-      <ion-input [(ngModel)]="doacao.titulo">
+      <ion-input [(ngModel)]="doacao.titulo" [readonly]="ong">
       </ion-input>
     </ion-item>
 
@@ -19,7 +19,7 @@
       <ion-label stacked>
         Público alvo
       </ion-label>
-      <ion-input [(ngModel)]="doacao.publico_alvo">
+      <ion-input [(ngModel)]="doacao.publico_alvo" [readonly]="ong">
       </ion-input>
     </ion-item>
     
@@ -27,7 +27,7 @@
       <ion-label stacked>
         Data da postagem
       </ion-label>
-      <ion-input [(ngModel)]="dataCriacao" readonly>
+      <ion-input [(ngModel)]="dataCriacao" readonly >
           
       </ion-input>
     </ion-item>
@@ -36,15 +36,31 @@
       <ion-label stacked>
         Descrição
       </ion-label>
-      <ion-textarea [(ngModel)]="doacao.descricao">
+      <ion-textarea [(ngModel)]="doacao.descricao" [readonly]="ong">
       </ion-textarea>
     </ion-item>
 
+    <ion-item *ngIf="ong">
+      <ion-label stacked>
+        Telefone
+      </ion-label>
+      <ion-input [(ngModel)]="doacao.usuario.dados_pessoais.telefone" readonly >  
+      </ion-input>
+    </ion-item>
+      
+    <ion-item *ngIf="ong">
+      <ion-label stacked>
+        Bairro
+      </ion-label>
+      <ion-input [(ngModel)]="doacao.usuario.dados_pessoais.endereco.bairro" readonly >  
+      </ion-input>
+    </ion-item>
+    
     <p>
       {{msg}}
     </p>
 
-    <button ion-button (click)="update()" padding>Atualizar</button>
+    <button *ngIf="!ong" ion-button (click)="update()" padding>Atualizar</button>
   </div>
 
 </ion-content>
