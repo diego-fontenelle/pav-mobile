@@ -1,0 +1,118 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Cadastrar</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+    <div *ngIf="usuario" class="item-detail" padding>
+      
+      <ion-list no-lines>
+        <ion-list-header>
+          Dados do usuário
+        </ion-list-header>
+
+        <ion-item>
+          <ion-label floating>
+            E-mail
+          </ion-label>
+          <ion-input [(ngModel)]="usuario.login">
+          </ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label floating>
+            Senha
+          </ion-label>
+          <ion-input type="password" [(ngModel)]="usuario.senha">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>
+            Confimar Senha
+          </ion-label>
+          <ion-input type="password" [(ngModel)]="confirmarSenha">
+          </ion-input>
+        </ion-item>
+      </ion-list>
+
+      <ion-list no-lines>
+        <ion-list-header>
+          Dados pessoais
+        </ion-list-header>
+
+        <ion-item>
+          <ion-label floating>
+            Nome
+          </ion-label>
+          <ion-input [(ngModel)]="usuario.dados_pessoais.nome">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>
+            Sobrenome
+          </ion-label>
+          <ion-input [(ngModel)]="usuario.dados_pessoais.sobrenome">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>
+            Telefone
+          </ion-label>
+          <ion-input [(ngModel)]="usuario.dados_pessoais.telefone">
+          </ion-input>
+        </ion-item>
+
+      </ion-list>
+
+      <ion-list no-lines>
+        <ion-list-header>
+          Endereço
+        </ion-list-header>
+
+        <ion-item>
+          <ion-label floating>
+            Logradouro
+          </ion-label>
+          <ion-input [(ngModel)]="usuario.dados_pessoais.endereco.logradouro">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>
+            Bairro
+          </ion-label>
+          <ion-input [(ngModel)]="usuario.dados_pessoais.endereco.bairro">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>
+            Complemento
+          </ion-label>
+          <ion-input [(ngModel)]="usuario.dados_pessoais.endereco.complemento">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Gaming</ion-label>
+          <ion-select [(ngModel)]="usuario.dados_pessoais.endereco.cidade._id">
+            <!-- Right now we only need this one city -->
+            <ion-option value="59b5cc046c1fee2767cc65e6">São Luís</ion-option>
+          </ion-select>
+        </ion-item>
+
+
+      </ion-list>
+  
+      <p>
+        {{msg}}
+      </p>
+  
+      <button ion-button (click)="create()" padding>Cadastrar</button>
+    </div>
+  
+  </ion-content>

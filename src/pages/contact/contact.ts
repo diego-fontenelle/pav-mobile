@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { UsuarioProvider } from "../../providers/usuario.provider";
 
 @Component({
   selector: 'page-contact',
@@ -7,8 +8,15 @@ import { NavController } from 'ionic-angular';
 })
 export class ContactPage {
 
-  constructor(public navCtrl: NavController) {
+  public usuario: any;
 
+  constructor(public navCtrl: NavController, public usuarioProvider: UsuarioProvider) {
+    this.usuario = this.usuarioProvider.session;
+  }
+
+  ionViewDidLoad() {
+    
+    console.log(this.usuario);
   }
 
 }

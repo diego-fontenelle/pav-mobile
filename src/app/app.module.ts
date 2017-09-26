@@ -16,7 +16,9 @@ import { LoginPage } from '../pages/login/login';
 import { EventoPage } from '../pages/evento/evento';
 import { DetailsPage } from '../pages/evento/details/details';
 import { TabsPageOng } from '../pages/tabs-page-ong/tabs-page-ong';
-import { HomePageOng } from '../pages/ong/home'
+import { HomePageOng } from '../pages/ong/home';
+import { CreateEventoPage } from '../pages/evento/create/create';
+import { CadastrarPage } from '../pages/cadastrar/cadastrar';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -38,7 +40,9 @@ import { EventoProvider } from '../providers/evento.provider';
     EventoPage,
     DetailsPage,
     TabsPageOng,
-    HomePageOng
+    HomePageOng,
+    CreateEventoPage,
+    CadastrarPage
   ],
   imports: [
     BrowserModule,
@@ -58,7 +62,9 @@ import { EventoProvider } from '../providers/evento.provider';
     EventoPage,
     DetailsPage,
     TabsPageOng,
-    HomePageOng
+    HomePageOng,
+    CreateEventoPage,
+    CadastrarPage
   ],
   providers: [
     StatusBar,

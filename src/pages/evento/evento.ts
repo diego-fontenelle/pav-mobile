@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { EventoProvider } from "../../providers/evento.provider";
+import { UsuarioProvider } from "../../providers/usuario.provider";
 import { DetailsPage } from './details/details';
+import { CreateEventoPage } from "./create/create";
 import { LoadingController } from "ionic-angular";
 
 @Component({
@@ -11,12 +13,20 @@ import { LoadingController } from "ionic-angular";
 export class EventoPage {
 
   public eventos: any;
+  public usuario: any;
 
-  constructor(public navCtrl: NavController, public eventoProvider: EventoProvider, public loadingCtrl: LoadingController) {
+  constructor(
+    public navCtrl: NavController, 
+    public eventoProvider: EventoProvider,
+    public usuarioProvider: UsuarioProvider,
+    public loadingCtrl: LoadingController
+  ) {
   }
 
   ionViewDidLoad() {
     let loading = this.loadingCtrl.create();
+    this.usuario = this.usuarioProvider.session;
+    console.log(this.usuario);
 
     loading.present().then(
       () => this.eventoProvider.read()
@@ -57,10 +67,21 @@ export class EventoPage {
     );
   }
 
-  navigate(id) {
-    this.navCtrl.push(DetailsPage, {
-      id: id
-    });
+  navigate(page, id) {
+
+    switch (page) {
+      case 'view':
+        this.navCtrl.push(DetailsPage, {
+          id: id
+        });
+        break;
+
+      case 'create':
+        this.navCtrl.push(CreateEventoPage)
+    
+      default:
+        break;
+    }
   }
 
 

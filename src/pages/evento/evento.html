@@ -1,6 +1,12 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Eventos</ion-title>
+
+    <ion-buttons right *ngIf="usuario?.tipo == 'ONG'">
+      <button ion-button icon-only strong (click)="navigate('create')">
+        <ion-icon name="ios-add" md="md-add" style="color: #3c4fe2"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -10,8 +16,8 @@
   </ion-refresher>
 
   <ion-list>
-      <ion-card style="border-top: 3px solid steelblue;">
-        <ion-item *ngFor="let evento of eventos" (click)="navigate(evento._id)">
+      <ion-card *ngFor="let evento of eventos" style="border-top: 3px solid steelblue;">
+        <ion-item (click)="navigate('view', evento._id)">
           <ion-icon name="happy" item-left [style.color]="evento.status == 'Pendente' ? '#55acee'  : '#55eea7'"></ion-icon>
           <h3>{{evento.nome}}</h3>
           <p style="white-space: normal">{{evento.descricao}}</p>

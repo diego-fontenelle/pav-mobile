@@ -19,6 +19,10 @@ export class DoacaoProvider extends BaseProvider {
     return this.get(this.url + (id ? id : ''));
   }
 
+  getByUserId(id) {
+    return this.get(this.url + 'usuario/' + id);
+  }
+
   update(body) {
     return this.put(this.url, body);
   }

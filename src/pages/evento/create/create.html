@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Novo Evento</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="evento" class="item-detail" padding>
+
+    <ion-item>
+      <ion-label stacked>
+        Título
+      </ion-label>
+      <ion-input [(ngModel)]="evento.nome">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>
+        Descrição
+      </ion-label>
+      <ion-textarea [(ngModel)]="evento.descricao">
+        </ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>
+        Data
+      </ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="evento.data"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>
+        Hora
+      </ion-label>
+      <ion-input placeholder="12:00" [(ngModel)]="evento.hora">
+      </ion-input>
+    </ion-item>
+
+    <ion-list no-border>
+      <ion-list-header>
+        Endereço
+      </ion-list-header>
+      
+      <ion-item>
+        <ion-label stacked>
+          Logradouro
+        </ion-label>
+        <ion-input [(ngModel)]="evento.endereco.logradouro">
+        </ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label stacked>
+          Bairro
+        </ion-label>
+        <ion-input [(ngModel)]="evento.endereco.bairro">
+        </ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label stacked>
+          Complemento
+        </ion-label>
+        <ion-input [(ngModel)]="evento.endereco.complemento">
+        </ion-input>
+      </ion-item>
+    </ion-list>
+
+    <p>
+      {{msg}}
+    </p>
+
+    <button ion-button (click)="create()" padding>Cadastrar</button>
+  </div>
+
+</ion-content>

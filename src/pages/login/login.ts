@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { UsuarioProvider } from '../../providers/usuario.provider';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { HomePage } from '../../pages/home/home';
+import { CadastrarPage } from "../cadastrar/cadastrar";
 import { TabsPage } from '../../pages/tabs/tabs';
 import { TabsPageOng } from '../../pages/tabs-page-ong/tabs-page-ong';
 import { ToastController, LoadingController } from 'ionic-angular';
@@ -64,6 +65,10 @@ export class LoginPage {
     } 
   }
 
+  cadastrar() {
+    this.navCtrl.push(CadastrarPage);
+  }
+
   verify(data) {
     let usuario = data.usuario;
     // Se foi retornado um usuário, armazena na sessão
@@ -71,7 +76,8 @@ export class LoginPage {
       this.usuarioProvider.session = {
         nome: usuario.dados_pessoais.nome, 
         id: usuario._id,
-        tipo: usuario.tipo
+        tipo: usuario.tipo,
+        cidade: usuario.dados_pessoais.endereco.cidade
       };
       if(usuario.tipo == 'Doador')
         this.navCtrl.push(TabsPage);
