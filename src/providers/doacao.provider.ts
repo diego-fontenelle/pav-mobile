@@ -5,7 +5,7 @@ import { BaseProvider } from './base.provider';
 @Injectable()
 export class DoacaoProvider extends BaseProvider {
 
-  private url = 'https://api-pav.herokuapp.com/doacao/';
+  private url = 'http://localhost:3000/doacao/';
 
   constructor(private http: Http) {
     super(http);
@@ -21,6 +21,10 @@ export class DoacaoProvider extends BaseProvider {
 
   getByUserId(id) {
     return this.get(this.url + 'usuario/' + id);
+  }
+
+  getByStatus(status) {
+    return this.get(this.url + 'status/' + status);
   }
 
   update(body) {

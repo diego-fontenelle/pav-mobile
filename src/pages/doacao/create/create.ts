@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 import { DoacaoProvider } from '../../../providers/doacao.provider';
+import { UsuarioProvider } from '../../../providers/usuario.provider';
 import { Doacao } from '../../../models/doacao';
 import { HomePage } from '../../home/home';
 
@@ -14,10 +15,15 @@ export class DoacaoCreate {
   public dataCriacao: any;
   public msg: any
 
-  constructor(public navCtrl: NavController, private doacaoProvider: DoacaoProvider, public toastCtrl: ToastController) {}
+  constructor(
+    public navCtrl: NavController, 
+    private doacaoProvider: DoacaoProvider,
+    private usuarioProvider: UsuarioProvider,
+    public toastCtrl: ToastController
+  ) {}
 
   create() {
-    this.doacao.usuario._id = '59b993be37bf3a396ce27203';
+    this.doacao.usuario._id = this.usuarioProvider.session.id;
     this.doacaoProvider.create(this.doacao)
       .subscribe(
         data => { this.msg = (<any>data).message; this.navCtrl.push(HomePage); },

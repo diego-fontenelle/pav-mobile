@@ -46,7 +46,7 @@ export class HomePage {
   refresh(refresher) {
     let loading = this.loadingCtrl.create();
       loading.present().then(
-      () => this.doacaoProvider.read()
+      () => this.doacaoProvider.getByUserId(this.user.id)
             .subscribe(
               data => { 
                 this.doacoes = (<any>data).body; 

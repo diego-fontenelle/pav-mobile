@@ -11,6 +11,7 @@ import { DoacaoEdit } from "../doacao/edit/edit";
 export class HomePageOng {
 
   public doacoes;
+  private status = 'Pendente';
 
   constructor(
     public navCtrl: NavController, 
@@ -22,7 +23,7 @@ export class HomePageOng {
   ionViewDidLoad() {
     let loading = this.loadingCtrl.create();
     loading.present().then(
-      () => this.doacaoProvider.read()
+      () => this.doacaoProvider.getByStatus(this.status)
         .subscribe(
           data => {
             this.doacoes = (<any>data).body; 
@@ -48,7 +49,7 @@ export class HomePageOng {
   refresh(refresher) {
     let loading = this.loadingCtrl.create();
       loading.present().then(
-      () => this.doacaoProvider.read()
+      () => this.doacaoProvider.getByStatus(this.status)
             .subscribe(
               data => { 
                 this.doacoes = (<any>data).body;
