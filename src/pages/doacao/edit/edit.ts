@@ -169,4 +169,69 @@ export class DoacaoEdit {
       data => { console.log('doação atualizada'); this.navCtrl.push(HomePageOng) }
     )
   }
+
+  avaliarUsuario() {
+    let alert = this.alertCtrl.create(
+      {
+        title: 'Avalie o doador',
+        message: 'Como foi sua experiência com esse doador ? A qualidade dos bens doados ?',
+        buttons: [
+          {
+            text: 'Cancelar',
+            role: 'cancel',
+            handler: () => {
+              return true;
+            }
+          },
+          {
+            text: 'Ok',
+            handler: data => {
+              const body = { 
+                _id: this.doacao.usuario._id, 
+                avaliacao: {
+                  usuario: { 
+                    _id: this.usuarioProvider.session.id
+                  }, 
+                  score: data
+                }
+              }
+
+              this.usuarioProvider.avaliar(body)
+                .subscribe(
+                  response => {
+                    let toast = this.toastCtrl.create({
+                      message: (<any>response).message, 
+                      showCloseButton: true,
+                      closeButtonText: 'Ok',
+                      position: 'bottom',
+                      duration: 3000
+                    }); 
+          
+                    toast.present();
+                  },
+                  error => {
+                    let toast = this.toastCtrl.create({
+                      message: "Por favor, tente novamente", 
+                      showCloseButton: true,
+                      closeButtonText: 'Ok',
+                      position: 'bottom',
+                      duration: 3000
+                    }); 
+          
+                    toast.present();
+                  }
+                )
+            }
+          }
+        ],
+        inputs: [
+          { value: "1", name: "Ruim", label: "Ruim", type: 'radio' },
+          { value: "2", name: "Boa", label: "Boa", type: 'radio' },
+          { value: "3", name: "Excelente", label: "Execelente", type: 'radio' }
+        ]
+      }
+    );
+    alert.present();
+  }
+
 }

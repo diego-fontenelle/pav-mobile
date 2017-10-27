@@ -60,6 +60,10 @@
       {{msg}}
     </p>
 
+    <button ion-button outline icon-right *ngIf="ong" (click)="avaliarUsuario()">
+      Avaliar
+      <ion-icon name="star"></ion-icon>
+    </button>
     <button *ngIf="ong" (click)="presentConfirm()" ion-button>Receber doação</button>
     <button *ngIf="!ong" ion-button (click)="update()" padding>Atualizar</button>
   </div>

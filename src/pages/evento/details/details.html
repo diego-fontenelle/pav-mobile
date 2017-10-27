@@ -29,7 +29,7 @@
       </ion-item>
 
       <ion-item no-padding>
-        <p>
+        <p style="white-space: normal"> 
           <ion-icon name="pin" item-start></ion-icon>
           {{evento.endereco.bairro}}, {{evento.endereco.logradouro}}, {{evento.endereco.complemento}}
         </p>
@@ -51,8 +51,20 @@
 
     </ion-card-content>
 
-    
-  
+    <ion-row no-padding>
+      <ion-col>
+        <button ion-button clear icon-right *ngIf="doador" (click)="avaliarUsuario()">
+          Avaliar
+        </button>
+      </ion-col>
+      <ion-col></ion-col>
+      <ion-col>
+        <button ion-button clear icon-right *ngIf="doador" (click)="toggleLike()">
+          Curtir
+        </button>
+      </ion-col>
+    </ion-row>
+
   </ion-card>
 
 </ion-content>

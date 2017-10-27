@@ -28,4 +28,7 @@ export class UsuarioProvider extends BaseProvider{
     return this.post(this.url + 'login/', body); 
   }
 
+  avaliar(body) {
+    return this.put(this.url + 'avaliar', body);
+  }
 }

@@ -31,4 +31,8 @@ export class EventoProvider extends BaseProvider{
     return this.get("http://localhost:3000/evento/usuario/" + id);
   }
 
+  toggleLike(body) {
+    return this.put(this.url + "like", body);
+  }
+
 }
