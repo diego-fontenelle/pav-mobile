@@ -5,7 +5,7 @@ import { BaseProvider } from './base.provider';
 @Injectable()
 export class UsuarioProvider extends BaseProvider{
 
-  private url = 'http://localhost:3000/usuario/'//'https://api-pav.herokuapp.com/usuario/';
+  private url = 'https://api-pav.herokuapp.com/usuario/'//'https://api-pav.herokuapp.com/usuario/';
   public session: any;
 
   constructor(public http: Http) {

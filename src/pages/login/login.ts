@@ -77,7 +77,8 @@ export class LoginPage {
         nome: usuario.dados_pessoais.nome, 
         id: usuario._id,
         tipo: usuario.tipo,
-        cidade: usuario.dados_pessoais.endereco.cidade
+        cidade: usuario.dados_pessoais.endereco.cidade,
+        email: usuario.login
       };
       if(usuario.tipo == 'Doador')
         this.navCtrl.push(TabsPage);

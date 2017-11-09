@@ -5,7 +5,7 @@ import { BaseProvider } from './base.provider';
 @Injectable()
 export class EventoProvider extends BaseProvider{
 
-  private url = 'http://localhost:3000/evento/';//'https://api-pav.herokuapp.com/evento/';
+  private url = 'https://api-pav.herokuapp.com/evento/';//'https://api-pav.herokuapp.com/evento/';
 
   constructor(public http: Http) {
     super(http);
@@ -28,7 +28,7 @@ export class EventoProvider extends BaseProvider{
   }
 
   getByUsuario(id) {
-    return this.get("http://localhost:3000/evento/usuario/" + id);
+    return this.get(this.url + "usuario/" + id);
   }
 
   toggleLike(body) {
