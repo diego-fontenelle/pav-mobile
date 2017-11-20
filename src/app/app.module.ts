@@ -1,7 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
+import { PAV } from './app.component';
 import { HttpModule } from '@angular/http';
 import { NativeStorage } from '@ionic-native/native-storage';
 
@@ -29,7 +29,7 @@ import { EventoProvider } from '../providers/evento.provider';
 
 @NgModule({
   declarations: [
-    MyApp,
+    PAV,
     AboutPage,
     ContactPage,
     HomePage,
@@ -47,11 +47,11 @@ import { EventoProvider } from '../providers/evento.provider';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(PAV)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    PAV,
     AboutPage,
     ContactPage,
     HomePage,

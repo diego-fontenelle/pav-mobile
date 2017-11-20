@@ -15,6 +15,7 @@ export class HomePage {
   public doacoes: any;
   public doacoesRealizadas: number;
   public user: any;
+  public score: any;
 
   constructor(
     public navCtrl: NavController, 
@@ -25,6 +26,7 @@ export class HomePage {
 
     this.user = usuarioProvider.session;
     console.log(this.user);
+    this.score = Array(this.user.score);
   }
 
   ionViewDidLoad() {

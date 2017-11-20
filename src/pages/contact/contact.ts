@@ -10,14 +10,15 @@ import { LoginPage } from "../login/login"
 export class ContactPage {
 
   public usuario: any;
+  public score: Array<any>;
 
   constructor(public navCtrl: NavController, public toastCtrl: ToastController, public usuarioProvider: UsuarioProvider) {
     this.usuario = this.usuarioProvider.session;
+    this.score = Array(this.usuario.score);
   }
 
   ionViewDidLoad() {
-    
-    console.log(this.usuario);
+  
   }
 
   logout() {

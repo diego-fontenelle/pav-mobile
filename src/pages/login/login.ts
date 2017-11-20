@@ -78,8 +78,16 @@ export class LoginPage {
         id: usuario._id,
         tipo: usuario.tipo,
         cidade: usuario.dados_pessoais.endereco.cidade,
-        email: usuario.login
+        email: usuario.login,
+        score: 0
       };
+
+      for(let i = 0; i < data.usuario.avaliacoes.length; i++) {
+        this.usuarioProvider.session.score += data.usuario.avaliacoes[i].score;
+      }
+
+      this.usuarioProvider.session.score = this.usuarioProvider.session.score/data.usuario.avaliacoes.length;
+
       if(usuario.tipo == 'Doador')
         this.navCtrl.push(TabsPage);
       else {

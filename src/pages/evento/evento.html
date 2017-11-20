@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Eventos</ion-title>
+    <ion-title>Ações</ion-title>
 
     <ion-buttons right *ngIf="usuario?.tipo == 'ONG'">
       <button ion-button icon-only strong (click)="navigate('create')">
@@ -17,19 +17,29 @@
 
   <ion-list>
       <ion-card *ngFor="let evento of eventos" style="border-top: 3px solid steelblue;">
-        <ion-item (click)="navigate('view', evento._id)">
-          <ion-icon name="happy" item-left [style.color]="evento.status == 'Pendente' ? '#55acee'  : '#55eea7'"></ion-icon>
-          <h3>{{evento.nome}}</h3>
-          <p style="white-space: normal">{{evento.descricao}}</p>
-          <p>
-            <ion-icon name="calendar" item-start small></ion-icon>
-            {{evento.data}} às {{evento.hora}}
-          </p>
-          <p>
-            <ion-icon name="pin" item-start small></ion-icon>
-            {{evento.endereco.bairro}}, {{evento.endereco.logradouro}}
-          </p>
-        </ion-item>
+        
+        <ion-grid>
+          <ion-item>
+            <ion-row>
+              <ion-col col-12 (click)="navigate('view', evento._id)">
+                <h2>{{evento.nome}}</h2>
+              </ion-col>
+            </ion-row>
+          </ion-item>
+          
+          <ion-row padding>
+            <ion-col col-6>
+              <ion-icon name="pin" item-start></ion-icon>
+              {{evento.endereco.bairro}}
+            </ion-col>
+
+            <ion-col col-6>
+              <ion-icon name="calendar" item-start></ion-icon>
+              {{evento.data}}
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
       </ion-card>
   </ion-list>
 

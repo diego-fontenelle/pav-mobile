@@ -19,6 +19,12 @@
     <ion-item>
       <p>Perfil: {{usuario.tipo}}</p>
     </ion-item>
+
+    <ion-item>
+      <p>Avaliação:
+        <ion-icon *ngFor="let i of score" name='star' large style="color: #f5de5c"></ion-icon>
+      </p>
+    </ion-item>
   </ion-list>
 
   <button ion-button clear full icon-right color="danger" (click)="logout()">
